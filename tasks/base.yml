@@ -1,0 +1,50 @@
+---
+
+- name: add useful tools
+  package: name={{item}} state=latest
+  with_items:
+    - dnsutils
+    - htop
+  become: true
+
+- name: "Configure /etc/hosts"
+  become: true
+  blockinfile:
+    dest: "/etc/hosts"
+    marker: "# {mark} ANSIBLE MANAGED BLOCK {{ item }}"
+    block: |
+      {{ bobnet_networking[item].eth0_ipv4_address }} {{ item }}
+  with_items: "{{ hostvars }}"
+  when: "item != ansible_hostname"
+
+- name: "Ensure docker is installed"
+  become: true
+  package:
+    name: docker.io
+    state: latest
+
+- name: "Add ansible to groups"
+  become: true
+  user:
+    name: "{{ bobnet_ansible_user }}"
+    append: true
+    groups:
+      - docker
+
+- name: "Create bobnet certificate directory"
+  become: true
+  file:
+    dest: "/etc/tls"
+    owner: root
+    group: root
+    mode: 0700
+    state: directory
+
+# TODO: Move this to docker secrets
+- name: "Add bobnet certificate"
+  become: true
+  copy:
+    dest: "/etc/tls/{{ item.filename }}"
+    content: "{{ item.content }}"
+  no_log: true
+  with_items: "{{ bobnet_tls_certificates }}"
