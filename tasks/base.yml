@@ -31,6 +31,14 @@
     groups:
       - docker
 
+- name: "Wait for docker service to start"
+  become: true
+  shell: "docker info"
+  register: result
+  until: result.rc == 0
+  retries: 5
+  delay: 5
+
 - name: "Create bobnet certificate directory"
   become: true
   file:

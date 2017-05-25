@@ -1,4 +1,5 @@
 bobnet_ansible_user: "ubuntu"
+bobnet_swarm_manager: "bob01"
 
 bobnet_networking:
   bob01:

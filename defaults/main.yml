@@ -1,5 +1,7 @@
 bobnet_ansible_user: "ansible"
 
+# bobnet_swarm_manager: "bob01"
+
 bobnet_networking: []
 # bob01:
 #   eth0_ipv4_address: "192.0.2.65"
