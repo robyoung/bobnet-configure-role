@@ -1,3 +1,7 @@
+---
+
+bobnet_os: "raspbian"
+
 bobnet_ansible_user: "ansible"
 
 # bobnet_swarm_manager: "bob01"

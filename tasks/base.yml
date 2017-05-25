@@ -20,7 +20,7 @@
 - name: "Ensure docker is installed"
   become: true
   package:
-    name: docker.io
+    name: "{{ bobnet_docker_package }}"
     state: latest
 
 - name: "Add ansible to groups"

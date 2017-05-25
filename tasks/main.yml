@@ -1,4 +1,6 @@
 ---
 
+- include_vars: "{{ bobnet_os }}.yml"
+
 - include: base.yml
 - include: docker-swarm.yml
