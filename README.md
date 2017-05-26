@@ -1,4 +1,4 @@
-# Bobnet Role
+# Bobnet Configure Role
 
 An Ansible role for configuring the nodes on the Bobnet Raspberry Pi
 cluster.
