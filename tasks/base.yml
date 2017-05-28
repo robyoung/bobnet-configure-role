@@ -1,5 +1,18 @@
 ---
 
+- name: generate GB locale
+  become: true
+  locale_gen:
+    name: "{{ bobnet_locale }}"
+    state: present
+
+- name: add locale as default
+  become: true
+  copy:
+    dest: /etc/default/locale
+    content: |
+      LANG={{ bobnet_locale }}
+
 - name: add useful tools
   package: name={{item}} state=latest
   with_items:
