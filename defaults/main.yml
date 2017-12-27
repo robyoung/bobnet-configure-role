@@ -1,10 +1,13 @@
 ---
 
-bobnet_os: "raspbian"
-
 bobnet_ansible_user: "ansible"
+bobnet_locale: "en_GB.UTF-8"
 
-# bobnet_swarm_manager: "bob01"
+bobnet_hosts: []
+# - bob01
+
+bobnet_oses: {}
+# bob01: hypriot
 
 bobnet_networking: []
 # bob01:
@@ -18,8 +21,3 @@ bobnet_tls_certificates: []
 #   content: "{{ super_private_key }}"
 # - filename: "my.example.com.fullchain.pem"
 #   content: "full cert chain"
-
-bobnet_swarm_labels: []
-# - host: bob01
-#   labels:
-#     - "label_name=label_value"
