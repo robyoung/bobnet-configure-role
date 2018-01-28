@@ -21,3 +21,5 @@ bobnet_tls_certificates: []
 #   content: "{{ super_private_key }}"
 # - filename: "my.example.com.fullchain.pem"
 #   content: "full cert chain"
+
+bobnet_disks: []

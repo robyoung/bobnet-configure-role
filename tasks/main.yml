@@ -3,3 +3,4 @@
 - include_vars: "{{ bobnet_oses[inventory_hostname] }}.yml"
 
 - include: base.yml
+- include: data.yml

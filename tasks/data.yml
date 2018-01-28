@@ -1,0 +1,20 @@
+---
+
+- name: create target directories
+  become: true
+  file:
+    dest: "{{ item.target }}"
+    owner: root
+    group: root
+    mode: 0700
+    state: directory
+  with_items: "{{ bobnet_disks }}"
+
+- name: mound bobnet disks
+  become: true
+  mount:
+    path: "{{ item.target }}"
+    src: "UUID={{ item.uuid }}"
+    fstype: "{{ item.fstype }}"
+    state: mounted
+  with_items: "{{ bobnet_disks }}"
